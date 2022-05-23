@@ -2,7 +2,6 @@ let colours = [
   ["green", 1],
   ["blue", 1],
   ["purple", 1],
-  ["red", 1],
   ["yellow", 1],
   ["orange", 1],
   ["pink", 1],

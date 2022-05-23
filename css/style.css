@@ -212,3 +212,11 @@ button:active {
 #review {
     display: none;
 }
+
+.monster-attribute {
+    position:absolute;
+    top:3vw;
+    left:4vw;
+    width:50%;
+    height:50%;
+}

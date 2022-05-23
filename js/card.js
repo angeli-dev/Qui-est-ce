@@ -30,22 +30,25 @@ class Card {
   display(parent) {
     //body
     let body = document.createElement("p");
-    body.innerHTML =
-      this.body["colours"] + " " + this.body["body_types"] + " body";
+    body.innerHTML = '<img class="monster-attribute" src="assets/img/body/colours/' + this.body["colours"] + '.png"/>'
+        + '<img class="monster-attribute" src="assets/img/body/types/' + this.body["body_types"] + '.png"/>'
     parent.appendChild(body);
+
     //antenna(s)
     let antenna = document.createElement("p");
-    antenna.innerHTML =
-      this.antenna["number"] + " " + this.antenna["colours"] + " antenna(s)";
+    antenna.innerHTML = '<img class="monster-attribute" src="assets/img/antenna/' + this.antenna["number"] + '_' + this.antenna["colours"] + '.png"/>'
     parent.appendChild(antenna);
+
     //eye(s)
     let eye = document.createElement("p");
-    eye.innerHTML = this.eye["number"] + " " + this.eye["colours"] + " eye(s)";
+    eye.innerHTML = '<img class="monster-attribute" src="assets/img/eye/' + this.eye["number"] + '_' + this.eye["colours"] + '.png"/>'
     parent.appendChild(eye);
+
     //mouth
     let mouth = document.createElement("p");
-    mouth.innerHTML = this.mouth["mouth_types"] + " mouth ";
+    mouth.innerHTML = '<img class="monster-attribute" src="assets/img/mouth/' + this.mouth["mouth_types"] + '.png"/>'
     parent.appendChild(mouth);
+
     //name
     let name = document.createElement("p");
     name.classList = "card_name";
