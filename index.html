@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Qui est-ce ?</title>
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
+
+
+</head>
+
+<body>
+	<section id="introduction">
+		<p>Qui est-ce ?</p>
+		<button id="play">Jouer</button>
+	</section>
+	<section id="game">
+		<div id="game-cards">
+			<div id="cards"></div>
+			<div id="main-card-box"></div>
+		</div>
+		<div id="computer-chat" class="chat">
+			<div id="computer-question" class="question"></div>
+			<div id="computer-reponse" class="reponse"><button id="yes">Oui</button><button id="no">Non</button></div>
+		</div>
+		<div id="user-chat" class="chat">
+			<div id="user-question" class="question"></div>
+			<div id="user-reponse-body-part" class="reponse">
+			</div>
+			<div id="user-reponse-attributes-type" class="reponse"></div>
+		</div>
+		<div id="end-message" class="chat">
+			<p><span id="winner-end-message"></span> win!</p>
+		</div>
+	</section>
+	<section id="review">
+		<p>Statistiques</p>
+		<button id="play-again" onclick="history.go(0)">Rejouer</button>
+	</section>
+</body>
+
+<script src="js/plants_names_list.js"></script>
+<script src="js/attributes.js"></script>
+<script src="js/html_elements.js"></script>
+<script src="js/rand.js"></script>
+<script src="js/markov.js"></script>
+<script src="js/card.js"></script>
+<script src="js/question.js"></script>
+<script src="js/player.js"></script>
+<script src="js/game.js"></script>
+<script src="js/main.js"></script>
+<script src="js/events.js"></script>
+
+</html>
