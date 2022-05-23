@@ -157,6 +157,7 @@ function save_user_no_answer() {
 }
 
 function computer_answer(game, body_part, characteristic, attribute) {
+  console.log(game.computer.main_card);
   if (game.computer.main_card[body_part][characteristic] == attribute) {
     return "YES";
   } else {

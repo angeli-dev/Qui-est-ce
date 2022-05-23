@@ -36,12 +36,12 @@ class Card {
 
     //antenna(s)
     let antenna = document.createElement("p");
-    antenna.innerHTML = '<img class="monster-attribute" src="assets/img/antenna/' + this.antenna["number"] + '_' + this.antenna["colours"] + '.png"/>'
+    antenna.innerHTML = '<img class="monster-attribute" src="assets/img/antenna/' + this.antenna["numbers"] + '_' + this.antenna["colours"] + '.png"/>'
     parent.appendChild(antenna);
 
     //eye(s)
     let eye = document.createElement("p");
-    eye.innerHTML = '<img class="monster-attribute" src="assets/img/eye/' + this.eye["number"] + '_' + this.eye["colours"] + '.png"/>'
+    eye.innerHTML = '<img class="monster-attribute" src="assets/img/eye/' + this.eye["numbers"] + '_' + this.eye["colours"] + '.png"/>'
     parent.appendChild(eye);
 
     //mouth
