@@ -157,15 +157,6 @@ function save_user_no_answer() {
 }
 
 function computer_answer(game, body_part, characteristic, attribute) {
-<<<<<<< HEAD
-  console.log(game.computer.main_card);
-=======
-  console.log(attribute);
-  console.log(body_part);
-  console.log(characteristic);
-
-  console.log(game.computer.main_card[body_part][characteristic]);
->>>>>>> 31957c10423addba8a7030e989463ea8c1423016
   if (game.computer.main_card[body_part][characteristic] == attribute) {
     return "YES";
   } else {
@@ -198,8 +189,6 @@ function create_user_response_button_name(game) {
           0,
           game.computer.main_card.name.length - 1
         );
-        console.log(game.computer.main_card.name);
-        console.log(game.computer.main_card.name.length);
       }
       // ask the computer and write the response
       if (game.computer.main_card.name == input.value.toLowerCase()) {
