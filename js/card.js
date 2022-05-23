@@ -13,12 +13,12 @@ class Card {
     };
     //antenna(s)
     this.antenna = {
-      number: rand(numbers),
+      numbers: rand(numbers),
       colours: rand(colours),
     };
     //eye(s)
     this.eye = {
-      number: rand(numbers),
+      numbers: rand(numbers),
       colours: rand(colours),
     };
     //mouth
@@ -30,8 +30,13 @@ class Card {
   display(parent) {
     //body
     let body = document.createElement("p");
-    body.innerHTML = '<img class="monster-attribute" src="assets/img/body/colours/' + this.body["colours"] + '.png"/>'
-        + '<img class="monster-attribute" src="assets/img/body/types/' + this.body["body_types"] + '.png"/>'
+    body.innerHTML =
+      '<img class="monster-attribute" src="assets/img/body/colours/' +
+      this.body["colours"] +
+      '.png"/>' +
+      '<img class="monster-attribute" src="assets/img/body/types/' +
+      this.body["body_types"] +
+      '.png"/>';
     parent.appendChild(body);
 
     //antenna(s)
@@ -46,7 +51,10 @@ class Card {
 
     //mouth
     let mouth = document.createElement("p");
-    mouth.innerHTML = '<img class="monster-attribute" src="assets/img/mouth/' + this.mouth["mouth_types"] + '.png"/>'
+    mouth.innerHTML =
+      '<img class="monster-attribute" src="assets/img/mouth/' +
+      this.mouth["mouth_types"] +
+      '.png"/>';
     parent.appendChild(mouth);
 
     //name
