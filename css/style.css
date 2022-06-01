@@ -246,3 +246,7 @@ button:active {
     flex-direction: column;
     align-items: center;
 }
+
+#review {
+    margin-top: 50vh;
+}
