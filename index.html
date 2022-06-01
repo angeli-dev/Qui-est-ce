@@ -5,25 +5,135 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Qui est-ce ?</title>
+	<title>Who is it?</title>
 	<link rel="stylesheet" type="text/css" href="./css/style.css">
-
-
 </head>
 
 <body>
 	<section id="introduction">
-		<p>Qui est-ce ?</p>
-		<button id="play">Jouer</button>
+		<h1>Who is it?</h1>
+		<!-- To custom the mode of the game -->
+		<!--<div>
+			<label>Choose your game's mode:</label>
+			<div>
+				<button id="basic">Basic</button>
+				<button id="custom">Custom</button>
+				<button id="random">Random</button>
+			</div>
+		</div>
+		<div>
+			<h2>Probabilité de la loi uniforme</h2>
+			<div id="custom_probability">
+				<div>
+					<h3>Les couleurs</h3>
+					<p class="element">Vert :
+						<input type="number" class="element_probability" value="1" min="0" max="6">
+						/
+						<span>6</span>
+					</p>
+					<p class="element">Bleu :
+						<input type="number" class="element_probability" value="1" min="0" max="6">
+						/
+						<span>6</span>
+					</p>
+					<p class="element">Violet :
+						<input type="number" class="element_probability" value="1" min="0" max="6">
+						/
+						<span>6</span>
+					</p>
+					<p class="element">Jaune :
+						<input type="number" class="element_probability" value="1" min="0" max="6">
+						/
+						<span>6</span>
+					</p>
+					<p class="element">Orange :
+						<input type="number" class="element_probability" value="1" min="0" max="6">
+						/
+						<span>6</span>
+					</p>
+					<p class="element">Rose :
+						<input type="number" class="element_probability" value="1" min="0" max="6">
+						/
+						<span>6</span>
+					</p>
+				</div>
+				<div>
+					<h3>Les nombres</h3>
+					<p class="element">1 :
+						<input type="number" class="element_probability" value="1" min="0" max="3">
+						/
+						<span>3</span>
+					</p>
+					<p class="element">2 :
+						<input type="number" class="element_probability" value="1" min="0" max="3">
+						/
+						<span>3</span>
+					</p>
+					<p class="element">3 :
+						<input type="number" class="element_probability" value="1" min="0" max="3">
+						/
+						<span>3</span>
+					</p>
+				</div>
+				<div>
+					<h3>Le corps</h3>
+					<p class="element">Poilu :
+						<input type="number" class="element_probability" value="1" min="0" max="3">
+						/
+						<span>3</span>
+					</p>
+					<p class="element">A plumes :
+						<input type="number" class="element_probability" value="1" min="0" max="3">
+						/
+						<span>3</span>
+					</p>
+					<p class="element">A écailles :
+						<input type="number" class="element_probability" value="1" min="0" max="3">
+						/
+						<span>3</span>
+					</p>
+				</div>
+				<div>
+					<h3>La bouche</h3>
+					<p class="element">Qui fait un bisou :
+						<input type="number" class="element_probability" value="1" min="0" max="5">
+						/
+						<span>5</span>
+					</p>
+					<p class="element">Grimaçante :
+						<input type="number" class="element_probability" value="1" min="0" max="5">
+						/
+						<span>5</span>
+					</p>
+					<p class="element">Triste :
+						<input type="number" class="element_probability" value="1" min="0" max="5">
+						/
+						<span>5</span>
+					</p>
+					<p class="element">Triste :
+						<input type="number" class="element_probability" value="1" min="0" max="5">
+						/
+						<span>5</span>
+					</p>
+					<p class="element">Qui rigole :
+						<input type="number" class="element_probability" value="1" min="0" max="5">
+						/
+						<span>5</span>
+					</p>
+				</div>
+			</div>-->
+		<button id="play">Play</button>
+		</div>
 	</section>
 	<section id="game">
 		<div id="game-cards">
 			<div id="cards"></div>
 			<div id="main-card-box"></div>
+			<div class="fantom" style="display: none; left: 100px; top: 200px;"></div>
 		</div>
 		<div id="computer-chat" class="chat">
 			<div id="computer-question" class="question"></div>
-			<div id="computer-reponse" class="reponse"><button id="yes">Oui</button><button id="no">Non</button></div>
+			<div id="computer-reponse" class="reponse"><button id="yes">Yes</button><button id="no">No</button></div>
 		</div>
 		<div id="user-chat" class="chat">
 			<div id="user-question" class="question"></div>
@@ -36,8 +146,8 @@
 		</div>
 	</section>
 	<section id="review">
-		<p>Statistiques</p>
-		<button id="play-again" onclick="history.go(0)">Rejouer</button>
+		<p>The end</p>
+		<button id="play-again" onclick="history.go(0)">Play again!</button>
 	</section>
 </body>
 
@@ -50,6 +160,7 @@
 <script src="js/question.js"></script>
 <script src="js/player.js"></script>
 <script src="js/game.js"></script>
+<script src="js/fantom.js"></script>
 <script src="js/main.js"></script>
 <script src="js/events.js"></script>
 

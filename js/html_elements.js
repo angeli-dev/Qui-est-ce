@@ -13,9 +13,13 @@ let user_response_attributes_type_element = document.querySelector(
 let end_message_element = document.querySelector("#end-message");
 let winner_end_message_element = document.querySelector("#winner-end-message");
 let game_element = document.querySelector("#game");
+let game_card_element = document.querySelector("#game-cards");
 let review_element = document.querySelector("#review");
 let introduction_element = document.querySelector("#introduction");
 let play_element = document.querySelector("#play");
+let fantoms_element = document.querySelectorAll(".fantom");
+
+/*-------------------------------------------------------------*/
 
 function create_user_response_button(name) {
   let new_button = create_button(name);
@@ -37,6 +41,10 @@ function create_button(name) {
 function add_end_message(winner) {
   // hide the chat of the computer turn
   computer_chat_element.style.display = "none";
+  for (let i = 0; i < fantoms_element.length; i++) {
+    clearInterval(fantom_interval);
+    fantoms_element[i].remove();
+  }
   // show the chat of the user turn
   user_chat_element.style.display = "none";
   end_message_element.style.display = "flex";

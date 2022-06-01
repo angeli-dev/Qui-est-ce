@@ -35,7 +35,7 @@ function display_cards(cards) {
     card_inner.appendChild(card_front);
 
     let card_back = document.createElement("div");
-    card_back.innerHTML = "cliquer pour retourner";
+    card_back.innerHTML = "click to return";
     card_back.classList = "card-back";
     card_inner.appendChild(card_back);
 

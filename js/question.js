@@ -1,9 +1,9 @@
 class Question {
   constructor() {
     // choose a part of the body randomly
-    this.body_part = equilateral_rand(Object.keys(attributes));
+    this.body_part = equi_rand(Object.keys(attributes));
     // choose an array of attributes of this part of body
-    this.attributes_array = equilateral_rand(attributes[this.body_part]);
+    this.attributes_array = equi_rand(attributes[this.body_part]);
     // select an attribute of this array
     this.attribute = rand(Object.values(this.attributes_array));
   }
@@ -11,7 +11,7 @@ class Question {
     // create html elements
     let question = document.createElement("p");
     question.innerHTML =
-      "Est-ce-que ton monstre possède ... " +
+      "Does your monster have... " +
       this.attribute +
       " " +
       this.body_part +

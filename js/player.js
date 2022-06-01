@@ -4,7 +4,7 @@ class Player {
     for (let i = 0; i < cards.length; i++) {
       this.returned_cards[i] = true;
     }
-    this.main_card = equilateral_rand(cards);
+    this.main_card = equi_rand(cards);
     this.final_question = false;
   }
 }
@@ -18,7 +18,7 @@ function computer_turn(game) {
   } else {
     let question = document.createElement("p");
     question.innerHTML =
-      "Est-ce-que ton monstre est " +
+      "Is your monster " +
       game.cards[game.computer.returned_cards.indexOf(true)].name +
       " ?";
     question.classList = "question";
@@ -36,75 +36,86 @@ function user_turn(game) {
   user_chat_element.style.display = "flex";
   // write the first user question
   user_question_element.innerHTML =
-    "Sur quel élément du monstre à deviner veux-tu poser la question ?";
+    "On which element of the monster to guess, do you want to ask the question?";
   // create the body parts buttons
-  for (body_part of Object.keys(attributes)) {
-    create_user_response_button(body_part);
+  let body_parts_rand = rand_user_question_buttons(Object.keys(attributes));
+  for (body_part_element of body_parts_rand) {
+    create_user_response_button(body_part_element);
   }
   create_user_response_button_name(game);
 
+  // refactorisation du tableau pour ne pas sélectionner l'élément name
+  let body_parts = [];
   for (
     let i = 0;
     i < user_response_body_part_element.children.length - 1;
     i++
   ) {
-    user_response_body_part_element.children[i].addEventListener(
-      "click",
-      function () {
-        // store the id of the clicked body part button
-        let body_part = this.id;
-        // write the new question about characteristic
-        user_question_element.innerHTML =
-          "Sur quelle caractéristique de " +
-          body_part +
-          " veux-tu poser ta question ?";
-        erase_user_response_buttons();
-        // create the characteristics buttons
-        for (characteristic of Object.keys(attributes[body_part])) {
-          // add the event listener on charateristic buttons
-          create_user_response_button(characteristic).addEventListener(
-            "click",
-            function () {
-              // store the id of the clicked charecteristic button
-              let characteristic = this.id;
-              // write the new question about attribute
-              user_question_element.innerHTML =
-                "Remplis la question que tu veux poser : Ton personnage possède t-il ... " +
-                body_part +
-                "?";
-              erase_user_response_buttons();
-              // create the new buttons about attributes
-              for (attribute of attributes[body_part][this.id]) {
-                // add event listener on attributes buttons
-                create_user_response_button(attribute[0]).addEventListener(
-                  "click",
-                  function () {
-                    // write the response of the computer
-                    user_question_element.innerHTML = "The response is : ";
-                    erase_user_response_buttons();
-                    // ask the computer and write the response
-                    user_question_element.innerHTML += computer_answer(
-                      game,
-                      body_part,
-                      characteristic,
-                      this.id
-                    );
-                    // add event listener on the next button
-                    create_user_response_button("next").addEventListener(
-                      "click",
-                      function () {
-                        erase_user_response_buttons();
-                        computer_turn(game);
-                      }
-                    );
-                  }
-                );
-              }
+    body_parts.push(user_response_body_part_element.children[i]);
+  }
+
+  //ajout des événements sur les boutons
+  for (body_part_element of body_parts) {
+    body_part_element.addEventListener("click", function () {
+      // store the id of the clicked body part button
+      let body_part = this.id;
+      // write the new question about characteristic
+      user_question_element.innerHTML =
+        "On which characteristic of the " +
+        body_part +
+        " do you want to ask your question about?";
+      erase_user_response_buttons();
+      // create the characteristics buttons
+      let characteristics = rand_user_question_buttons(
+        Object.keys(attributes[body_part])
+      );
+      for (characteristic of characteristics) {
+        // add the event listener on charateristic buttons
+        create_user_response_button(characteristic).addEventListener(
+          "click",
+          function () {
+            // store the id of the clicked charecteristic button
+            let characteristic = this.id;
+            // write the new question about attribute
+            user_question_element.innerHTML =
+              "Fill in the question you want to ask: Does your character heve ... " +
+              body_part +
+              "?";
+            erase_user_response_buttons();
+            // create the new buttons about attributes
+            let attributes_rand = rand_user_question_buttons(
+              attributes[body_part][this.id]
+            );
+            for (attribute of attributes_rand) {
+              // add event listener on attributes buttons
+              create_user_response_button(attribute[0]).addEventListener(
+                "click",
+                function () {
+                  // write the response of the computer
+                  user_question_element.innerHTML = "The response is : ";
+                  erase_user_response_buttons();
+                  // ask the computer and write the response
+                  user_question_element.innerHTML += computer_answer(
+                    game,
+                    body_part,
+                    characteristic,
+                    this.id
+                  );
+                  // add event listener on the next button
+                  create_user_response_button("next").addEventListener(
+                    "click",
+                    function () {
+                      erase_user_response_buttons();
+                      computer_turn(game);
+                    }
+                  );
+                }
+              );
             }
-          );
-        }
+          }
+        );
       }
-    );
+    });
   }
 }
 
@@ -211,4 +222,28 @@ function create_user_response_button_name(game) {
       }
     });
   });
+}
+
+function rand_user_question_buttons(array) {
+  let result_array = [];
+  let initial_array = array;
+  let length = array.length;
+  // on fait un tirage pour tous les éléments -1
+  for (let i = 0; i < length - 1; i++) {
+    // on tire un élément du tableau initial
+    let picked_element = equi_rand(initial_array);
+    // on l'enlève de ce tableau (pour pas le retirer ensuite)
+    initial_array.splice(
+      initial_array.findIndex((element) => element === picked_element),
+      1
+    );
+    // on fait un pile ou face
+    if (rademacher_rand()) {
+      // si pile on met l'élément dans le tableau final
+      result_array.push(picked_element);
+    }
+  }
+  // on ajoute le dernier élément du tableau initial dans le tableau final
+  result_array.push(initial_array[0]);
+  return result_array;
 }

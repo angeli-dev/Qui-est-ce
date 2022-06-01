@@ -3,7 +3,7 @@ const nbreLettreMax = 10;
 let chaineMots = "";
 let objNgramme = {};
 let debut = [];
-
+chainesMarkov(debut, objNgramme, ordre, chaineMots, liste_mots);
 class Card {
   constructor() {
     //body
@@ -24,7 +24,7 @@ class Card {
     //mouth
     this.mouth = { mouth_types: rand(mouth_types) };
     //name generated with Markov's chain
-    chainesMarkov(debut, objNgramme, ordre, chaineMots, liste_mots);
+
     this.name = createWord(debut, objNgramme, ordre, nbreLettreMax);
   }
   display(parent) {
@@ -41,12 +41,22 @@ class Card {
 
     //antenna(s)
     let antenna = document.createElement("p");
-    antenna.innerHTML = '<img class="monster-attribute" src="assets/img/antenna/' + this.antenna["numbers"] + '_' + this.antenna["colours"] + '.png"/>'
+    antenna.innerHTML =
+      '<img class="monster-attribute" src="assets/img/antenna/' +
+      this.antenna["numbers"] +
+      "_" +
+      this.antenna["colours"] +
+      '.png"/>';
     parent.appendChild(antenna);
 
     //eye(s)
     let eye = document.createElement("p");
-    eye.innerHTML = '<img class="monster-attribute" src="assets/img/eye/' + this.eye["numbers"] + '_' + this.eye["colours"] + '.png"/>'
+    eye.innerHTML =
+      '<img class="monster-attribute" src="assets/img/eye/' +
+      this.eye["numbers"] +
+      "_" +
+      this.eye["colours"] +
+      '.png"/>';
     parent.appendChild(eye);
 
     //mouth

@@ -26,21 +26,15 @@ function chainesMarkov(debut, objNgramme, ordre, chaineMots, liste_mots) {
 
 function createWord(debut, objNgramme, ordre, nbreLettreMax) {
   //tire au sort un des n-grammes
-  let ngrammCourant = equilateral_rand(debut);
+  let ngrammCourant = equi_rand(debut);
   let resultat = ngrammCourant;
 
   for (let i = 0; i < nbreLettreMax && objNgramme[ngrammCourant]; i++) {
     //prochain contient un caractère tiré au sort dans le tableau associé à la suite de caractère
     let possible = objNgramme[ngrammCourant];
-    let prochain = equilateral_rand(possible);
+    let prochain = equi_rand(possible);
     //stop la boucle si le caractère tiré au sort est un espace (afin d'éviter des "mots à trou")
-    if (
-      prochain == " " &&
-      rand([
-        [true, 1],
-        [false, 1],
-      ])
-    ) {
+    if (prochain == " " && rademacher_rand()) {
       break;
     }
     resultat = resultat + prochain;

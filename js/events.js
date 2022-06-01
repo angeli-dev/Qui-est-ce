@@ -22,4 +22,5 @@ no_element.addEventListener("click", save_user_no_answer);
 play_element.addEventListener("click", function () {
   introduction_element.style.display = "none";
   game_element.style.display = "block";
+  draw_fantom();
 });
