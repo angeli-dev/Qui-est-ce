@@ -78,7 +78,7 @@ function user_turn(game) {
             let characteristic = this.id;
             // write the new question about attribute
             user_question_element.innerHTML =
-              "Fill in the question you want to ask: Does your character heve ... " +
+              "Fill in the question you want to ask: Does your character have ... " +
               body_part +
               "?";
             erase_user_response_buttons();
