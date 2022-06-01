@@ -177,7 +177,7 @@ function computer_answer(game, body_part, characteristic, attribute) {
 
 function create_user_response_button_name(game) {
   create_user_response_button("name").addEventListener("click", function () {
-    user_question_element.innerHTML = "Qui est-ce ?";
+    user_question_element.innerHTML = "Who is it?";
     erase_user_response_buttons();
     // create the input
     let input = document.createElement("input");
